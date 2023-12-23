@@ -45,10 +45,10 @@ export const Searchbar = () => {
     <div className="input-wrapper">
       <FaSearch id="search-icon" />
       <input
-        placeholder="Type the name of your champion"
         value={input}
         onChange={handleInputChange}
       />
+      {input && (
       <div className="dropdown-menu">
         {filteredChampions.map(champion => (
           <div key={champion.id} className="dropdown-item">
@@ -60,6 +60,7 @@ export const Searchbar = () => {
           </div>
         ))}
       </div>
+      )}
     </div>
   );
 };

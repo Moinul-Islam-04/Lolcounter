@@ -1,0 +1,10 @@
+.ResponseArea-container {
+    height: 75%;
+    width: 100%;
+    position: relative;
+}
+
+.ResponseArea {
+    position: absolute;
+    bottom: 0;
+}
