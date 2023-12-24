@@ -1,10 +1,19 @@
 .ResponseArea-container {
-    height: 75%;
+    height: 100%;
     width: 100%;
     position: relative;
-}
-
-.ResponseArea {
+  }
+  
+  .ResponseArea {
     position: absolute;
     bottom: 0;
+  
+  }
+  textarea {
+    width: 33vw;
+    height: 95%;
+    box-sizing: border-box;
+    background-color: rgba(135, 206, 235, 0.8); /* Sky blue color with 80% opacity */
+    border: 1px solid #b3e0f7;
+    padding: 10px;
 }

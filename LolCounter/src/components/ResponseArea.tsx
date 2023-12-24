@@ -10,14 +10,14 @@ const ResponseArea = () => {
 
     return (
         <div className="ResponseArea-container">
-            <h2>Model Response:</h2>
-            <textarea
-                value={responseText}
-                onChange={handleTextAreaChange}
-                placeholder="Model response will appear here..."
-            />
-        </div>
-    );
+        <h2>Model Response:</h2>
+        <textarea
+            value={responseText}
+            onChange={handleTextAreaChange}
+            placeholder="Model response will appear here..."
+        />
+    </div>
+    )
 };
 
 export default ResponseArea;
