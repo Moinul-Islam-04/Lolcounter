@@ -15,6 +15,7 @@ export const Searchbar = () => {
   const [input, search] = useState("");
   const [champions, setChampions] = useState<Champion[]>([]);
   const [filteredChampions, setFilteredChampions] = useState<Champion[]>([]);
+  const [selectedChampion, setSelectedChampion] = useState<Champion | null>(null);
 
   useEffect(() => {
     // Make API call to get the list of champions from Data Dragon API
@@ -41,25 +42,47 @@ export const Searchbar = () => {
     setFilteredChampions(filtered);
   };
 
+  const handleChampionClick = (champion: Champion) => {
+    // Handle the click event for a selected champion
+    setSelectedChampion(champion);
+    // You can perform any additional logic here, e.g., send the selected champion to your ML model
+    console.log("Selected Champion:", champion);
+  };
+
+  const handleInputWrapperClick = () => {
+    // Clear the input and reset filtered champions when the input-wrapper is clicked
+    search("");
+    setFilteredChampions(champions);
+  };
   return (
-    <div className="input-wrapper">
+    <div className="input-wrapper" onClick={handleInputWrapperClick}>
       <FaSearch id="search-icon" />
       <input
         value={input}
         onChange={handleInputChange}
       />
-      {input && (
-      <div className="dropdown-menu">
-        {filteredChampions.map(champion => (
-          <div key={champion.id} className="dropdown-item">
-            <img
-              src={`http://ddragon.leagueoflegends.com/cdn/13.24.1/img/champion/${champion.image.full}`}
-              alt={champion.name}
-            />
-            {champion.name}
-          </div>
-        ))}
-      </div>
+      {input && !selectedChampion && (
+        <div className="dropdown-menu">
+          {filteredChampions.map(champion => (
+            <div
+              key={champion.id}
+              className="dropdown-item"
+              onClick={() => handleChampionClick(champion)}
+            >
+              <img
+                src={`http://ddragon.leagueoflegends.com/cdn/13.24.1/img/champion/${champion.image.full}`}
+                alt={champion.name}
+              />
+              {champion.name}
+            </div>
+          ))}
+        </div>
+      )}
+      {selectedChampion && (
+        <div>
+          <p>Selected Champion: {selectedChampion.name}</p>
+          {/* You can display additional information about the selected champion here */}
+        </div>
       )}
     </div>
   );
