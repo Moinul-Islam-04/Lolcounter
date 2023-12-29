@@ -13,7 +13,7 @@ function App() {
         <h2>Your champion</h2>
         <Searchbar></Searchbar>
       </div>
-      <div className='Response-Area-container'>
+      <div className="Response-Area-container">
       <ResponseArea></ResponseArea>
       </div>
        
